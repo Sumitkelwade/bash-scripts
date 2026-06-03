@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "=============================="
+echo "   SYSTEM INFORMATION REPORT  "
+echo "=============================="
+echo ""
+echo "Hostname     : $(hostname)"
+echo "OS           : $(cat /etc/os-release | grep PRETTY_NAME | cut -d= -f2)"
+echo "Kernel       : $(uname -r)"
+echo "Uptime       : $(uptime -p)"
+echo "CPU          : $(nproc) cores"
+echo "RAM Total    : $(free -h | awk '/Mem/{print $2}')"
+echo "RAM Used     : $(free -h | awk '/Mem/{print $3}')"
+echo "Disk Usage   : $(df -h / | awk 'NR==2{print $5}')"
+echo "IP Address   : $(hostname -I | awk '{print $1}')"
+echo ""
+echo "=============================="
